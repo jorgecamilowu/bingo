@@ -7,7 +7,7 @@ interface Props {
 
 export const NumberSlot: FC<Props> = ({ value }) => {
   return (
-    <div className="bg-gray-100 size-16 text-center">
+    <div className="bg-gray-100 lg:size-16 text-center">
       <Typography variant="h1">{value}</Typography>
     </div>
   );

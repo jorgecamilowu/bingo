@@ -14,8 +14,8 @@ function App() {
 
   return (
     <>
-      <div ref={divRef} className="flex justify-center">
-        <div className="w-3/4">
+      <div ref={divRef} className="flex justify-center sm:overflow-y-scroll">
+        <div className="lg:w-3/4">
           <Board>
             <div className="flex flex-col gap-8">
               <Typography variant="h1" color="secondary">
