@@ -12,9 +12,8 @@ export function useCapture(ref: RefObject<HTMLDivElement>) {
     const dataURL = canvas.toDataURL("[bingo_card]/png");
 
     const anchor = document.createElement("a");
-    anchor.target = "_blank";
     anchor.href = dataURL;
-    anchor.download = dataURL;
+    anchor.download = "bingo_card.png";
 
     document.body.appendChild(anchor);
 
