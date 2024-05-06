@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import "./App.css";
 import { Board } from "./components/ui/Board";
 import { NumberSlot } from "./components/ui/NumberSlot";
@@ -8,7 +8,7 @@ import { useCapture } from "./modules/download/useCapture";
 import { Button } from "./components/ui/Button";
 
 function App() {
-  const boardData = generateBoard();
+  const [board, setBoard] = useState(generateBoard());
   const divRef = useRef<HTMLDivElement>(null);
   const capture = useCapture(divRef);
 
@@ -23,7 +23,7 @@ function App() {
               </Typography>
               <div className="flex justify-center">
                 <div className="grid grid-cols-9 gap-1">
-                  {boardData.map((row, idx) => {
+                  {board.map((row, idx) => {
                     return (
                       <>
                         {idx % 3 === 0 && <div className="h-4 col-span-9" />}
@@ -40,9 +40,19 @@ function App() {
         </div>
       </div>
 
-      <Button position="floating" size="lg" onClick={capture}>
-        Download
-      </Button>
+      <div className="fixed bottom-8 right-8 flex flex-col gap-1">
+        <Button
+          size="lg"
+          onClick={() => {
+            setBoard(generateBoard());
+          }}
+        >
+          Refresh
+        </Button>
+        <Button size="lg" onClick={capture}>
+          Download
+        </Button>
+      </div>
     </>
   );
 }
